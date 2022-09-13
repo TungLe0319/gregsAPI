@@ -1,39 +1,56 @@
-import { appState } from "../AppState.js";
-import { Car } from "../Models/Car.js";
-import { Pop } from "../Utils/Pop.js";
-import {api} from "./AxiosService.js"
+import { appState } from '../AppState.js';
+import { Car } from '../Models/Car.js';
+import { Pop } from '../Utils/Pop.js';
+import { api } from './AxiosService.js';
 
- class CarsService {
+class CarsService {
+  async getCarsAPI() {
+    const res = await api.get('/api/cars');
+    // console.log('what are the cars',res.data);
+    appState.cars = res.data.map((banana) => new Car(banana));
+  }
 
+  //s when doing post or a put  the second is a Payload the third is your options
+  //when doing a get or delete the second is your options
+  async addCar(formData) {
+    const res = await api.post('/api/cars', formData);
+    console.log('what is response[addcar]', res.data);
+    //res.data includes all of the formData + the brand new shiny ID
+    let car = new Car(res.data);
+    // switched the car and ...appstate to have the car show up on top of the array/start of the page
+    appState.cars = [...appState.cars, car];
+  }
 
-async getCarsAPI(){
-  const res = await api.get('/api/cars')
-  // console.log('what are the cars',res.data);
-  appState.cars = res.data.map(banana => new Car(banana))
+  //use backticks to put in the id at the end of when put or delete
+  async deleteCar(id) {
+    const yes = await Pop.confirm('Are You Sure?');
+    if (!yes) {
+      return;
+    } //FULL STOP
+    await api.delete(`/api/cars/${id}`);
+    appState.cars = appState.cars.filter((c) => c.id != id);
+  }
+
+  setActiveCar(id) {
+    const car = appState.cars.find((car) => car.id == id);
+    if (!car) {
+      throw new Error('Bad ID');
+    }
+    appState.activeCar = car;
+    console.log('active car', appState.activeCar);
+  }
+
+  //example of a PUT REQUEST aka (UPDATE or EDIT)
+  //formData is the update you want to apply to that particular Car
+  async editCar(formData) {
+    const car = appState.activeCar;
+    const res = await api.put(`/api/cars/${car.id}`, formData);
+    console.log('[editCar]updated response', res.data);
+    const index = appState.cars.findIndex((c) => c.id == car.id);
+    const updatedCar = new Car(res.data);
+    appState.cars.splice(index, 1, updatedCar);
+    appState.emit('cars');
+  }
 }
 
-
-//s when doing post or a put  the second is a Payload the third is your options
-//when doing a get or delete the second is your options
-async  addCar(formData) {
-  const res = await api.post('/api/cars',formData)
-  console.log('what is response[addcar]',res.data);
-  //res.data includes all of the formData + the brand new shiny ID
-  let car = new Car(res.data)
-  // switched the car and ...appstate to have the car show up on top of the array/start of the page
-  appState.cars = [...appState.cars, car]
-  
-}
-
-
-
-//use backticks to put in the id at the end of when put or delete
-async deleteCar(id){
-  const yes = await Pop.confirm('Are You Sure?')
- await api.delete(`/api/cars/${id}`)
-appState.cars = appState.cars.filter(c => c.id != id)
-}
-}
-
-
-export const carsService = new CarsService()
+export const carsService = new CarsService();

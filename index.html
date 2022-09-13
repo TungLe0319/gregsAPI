@@ -37,9 +37,17 @@
           </div>
         </div>
         <div>
-          <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas">🚗
+          <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
+            onclick="app.carsController.addCar()">🚗
+            Add Car</button>
+          <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
+            onclick="app.carsController.addHouse()">🚗
             Add
-            Car</button>
+            House</button>
+          <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
+            onclick="app.carsController.addJob()">🚗
+            Add
+            Job</button>
         </div>
       </div>
     </nav>
@@ -83,14 +91,9 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div id="forms" class="offcanvas-body">
-        
-
-
-      
     </div>
   </div>
   <!-- !OFFCANVAS -->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
     integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

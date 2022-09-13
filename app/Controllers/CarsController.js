@@ -22,32 +22,50 @@ export class CarsController {
     setHTML('forms', Car.GetCarFormTemplate());
   }
 
-  async addCar() {
+  async handleSubmit() {
     try {
       window.event.preventDefault();
       const form = window.event.target;
       let formData = getFormData(form);
+
+if (appState.activeCar) {
+await  carsService.editCar(formData)
+  
+}else{
+await  carsService.addCar(formData)
+}
+
+      
       await carsService.addCar(formData);
       form.reset();
     } catch (error) {
       console.error('[addCar]', error);
-      Pop.error(error)
+      Pop.error(error);
     }
   }
 
-async deleteCar(id){
-  try {
-    await carsService.deleteCar()
-  } catch (error) {
-    console.error('[deleteCar]',error)
-    Pop.error(error)
+  async deleteCar(id) {
+    try {
+      await carsService.deleteCar();
+    } catch (error) {
+      console.error('[deleteCar]', error);
+      Pop.error(error);
+    }
   }
+
+
+
+addCar(){
+  appState.activeCar = null
+  const template = Car.GetCarFormTemplate()
+  setHTML('forms', template)
 }
 
-
-
-
-
+  //const editable = appState.activeCar is a broken down version of what's happening in the Car.GetCarFormTemplate()
+  beginEdit(id) {
+    carsService.setActiveCar(id);
+    setHTML('forms', Car.GetCarFormTemplate(appState.activeCar));
+  }
 
   async getCarsAPI() {
     try {
