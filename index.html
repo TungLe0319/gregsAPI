@@ -21,25 +21,76 @@
       <a class="navbar-brand ms-3" href="#">
         <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
           loading="lazy">
-        <span class="ms-2">gregsAPI</span>
+        <span class="ms-2">Gregslist</span>
       </a>
+      <div class="d-flex justify-content-between w-100 pe-3">
+        <div class="nav-links d-flex gap-3 ms-3">
+          <!-- TODO future Problem learn to use SPA links -->
+          <div>
+            <h6 class="mb-0 selectable p-2 rounded" onclick="app.carsController.showCars()">Cars</h6>
+          </div>
+          <div>
+            <h6 class="mb-0 selectable p-2 rounded" onclick="app.jobsController.showJobs()">Jobs</h6>
+          </div>
+          <div>
+            <h6 class="mb-0 selectable p-2 rounded" onclick="app.housesController.showHouses()">Houses </h6>
+          </div>
+        </div>
+        <div>
+          <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas">🚗
+            Add
+            Car</button>
+        </div>
+      </div>
     </nav>
-  </header> 
+  </header>
   <main>
     <div class="container-fluid">
       <div class="row mt-5 justify-content-center" id="listings">
         <!-- Where Templates will bw drawn -->
-       
       </div>
     </div>
     </div>
   </main>
-  <footer class="bg-dark text-light">
-    <div class="text-center no-select">
-      <p><small>Made with 💖 by CodeWorks</small></p>
+  <!-- MODAL -->
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  <!-- --------------------------- -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h1>HONDA</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
     </div>
-  </footer>
-  <!-- ------------------------ -->
+  </div>
+  <!-- -----------!MODAL------------------- -->
+  <!-- OFFCANVAS -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="rightcanvas" aria-labelledby="rightcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="rightcanvasLabel">Edit Car</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div id="forms" class="offcanvas-body">
+        
+
+
+      
+    </div>
+  </div>
+  <!-- !OFFCANVAS -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
     integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

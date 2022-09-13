@@ -5,9 +5,12 @@ import { setHTML } from "../Utils/Writer.js"
 
 function drawJobs(){
   let template = ''
-  appState.jobs.forEach(job => template += job.JobTemplate)
+  appState.jobs.forEach(job => template += job.JobCardTemplate)
   setHTML('listings',template)
 }
+
+
+
 
 export class JobsController{
 
@@ -15,6 +18,8 @@ export class JobsController{
     appState.on('jobs', drawJobs)
   }
 
+
+  
 
 
   async getJobsAPI(){

@@ -1,1 +1,9 @@
 /* BASIC STYLES HERE */
+* {
+}
+
+body {
+  background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F1556361.jpg&f=1&nofb=1);
+  background-size: cover;
+  background-position: center;
+}
