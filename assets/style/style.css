@@ -1,9 +1,28 @@
 /* BASIC STYLES HERE */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Oswald&family=Roboto&display=swap');
+
 * {
+  font-family: "Roboto", sans-serif;;
 }
 
 body {
   background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F1556361.jpg&f=1&nofb=1);
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+}
+
+
+.hoverdiv:hover{
+  transform: scale(1.2);
+  filter: invert(100%);
+transition: all 0.2s ease-in-out;
+}
+
+.hover:hover{
+filter: brightness(110%);
+filter: opacity(90%);
+
+transform: scale(1.02);
+transition: all 0.2s ease;
+
 }

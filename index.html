@@ -30,22 +30,22 @@
             <h6 class="mb-0 selectable p-2 rounded" onclick="app.carsController.showCars()">Cars</h6>
           </div>
           <div>
-            <h6 class="mb-0 selectable p-2 rounded" onclick="app.jobsController.showJobs()">Jobs</h6>
+            <h6 class="mb-0 selectable p-2 mx-3 rounded" onclick="app.housesController.showHouses()">Houses </h6>
           </div>
           <div>
-            <h6 class="mb-0 selectable p-2 rounded" onclick="app.housesController.showHouses()">Houses </h6>
+            <h6 class="mb-0 selectable p-2 rounded " onclick="app.jobsController.showJobs()">Jobs</h6>
           </div>
         </div>
         <div>
           <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
-            onclick="app.carsController.addCar()">🚗
+            onclick="app.carsController.addCar()">
             Add Car</button>
-          <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
-            onclick="app.carsController.addHouse()">🚗
+          <button id="formButton" class="btn btn-outline-light mx-3" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
+            onclick="app.housesController.addHouse()">
             Add
             House</button>
           <button id="formButton" class="btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#rightcanvas"
-            onclick="app.carsController.addJob()">🚗
+            onclick="app.jobsController.addJob()">
             Add
             Job</button>
         </div>
@@ -87,7 +87,7 @@
   <!-- OFFCANVAS -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="rightcanvas" aria-labelledby="rightcanvasLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="rightcanvasLabel">Edit Car</h5>
+      <h5 class="offcanvas-title" id="rightcanvasLabel">Create/Edit</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div id="forms" class="offcanvas-body">

@@ -14,7 +14,16 @@ function drawCars() {
 export class CarsController {
   constructor() {
     appState.on('cars', drawCars);
-    this.getCarsAPI();
+    // this.showCars();
+  }
+
+  async getCarsAPI() {
+    try {
+      await carsService.getCarsAPI();
+    } catch (error) {
+      console.error('[Get Cars]', error);
+      Pop.error(error);
+    }
   }
 
   showCars() {
@@ -28,15 +37,13 @@ export class CarsController {
       const form = window.event.target;
       let formData = getFormData(form);
 
-if (appState.activeCar) {
-await  carsService.editCar(formData)
-  
-}else{
-await  carsService.addCar(formData)
-}
+      if (appState.activeCar) {
+        await carsService.editCar(formData);
+      } else {
+        await carsService.addCar(formData);
+      }
 
-      
-      await carsService.addCar(formData);
+   
       form.reset();
     } catch (error) {
       console.error('[addCar]', error);
@@ -46,33 +53,22 @@ await  carsService.addCar(formData)
 
   async deleteCar(id) {
     try {
-      await carsService.deleteCar();
+      await carsService.deleteCar(id);
     } catch (error) {
       console.error('[deleteCar]', error);
       Pop.error(error);
     }
   }
 
-
-
-addCar(){
-  appState.activeCar = null
-  const template = Car.GetCarFormTemplate()
-  setHTML('forms', template)
-}
+  addCar() {
+    appState.activeCar = null;
+    const template = Car.GetCarFormTemplate();
+    setHTML('forms', template);
+  }
 
   //const editable = appState.activeCar is a broken down version of what's happening in the Car.GetCarFormTemplate()
   beginEdit(id) {
     carsService.setActiveCar(id);
     setHTML('forms', Car.GetCarFormTemplate(appState.activeCar));
-  }
-
-  async getCarsAPI() {
-    try {
-      await carsService.getCarsAPI();
-    } catch (error) {
-      console.error('[Get Cars]', error);
-      Pop.error(error);
-    }
   }
 }
