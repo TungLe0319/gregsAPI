@@ -13,7 +13,7 @@ function drawHouses() {
 
 export class HousesController {
   constructor() {
-    // this.showHouses()
+    this.showHouses()
     appState.on('houses', drawHouses);
   }
 
