@@ -42,15 +42,7 @@ class CarsService {
 
   //example of a PUT REQUEST aka (UPDATE or EDIT)
   //formData is the update you want to apply to that particular Car
-  async editCar(formData) {
-    const car = appState.activeCar;
-    const res = await api.put(`/api/cars/${car.id}`, formData);
-    console.log('[editCar]updated response', res.data);
-    const index = appState.cars.findIndex((c) => c.id == car.id);
-    const updatedCar = new Car(res.data);
-    appState.cars.splice(index, 1, updatedCar);
-    appState.emit('cars');
-  }
+r
 }
 
 export const carsService = new CarsService();

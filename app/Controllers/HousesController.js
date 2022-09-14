@@ -32,10 +32,10 @@ export class HousesController {
         await housesService.editHouse(formData);
       } else {
         await housesService.addHouse(formData);
+        form.reset();
       }
 
      
-      form.reset();
     } catch (error) {
       console.error('[addHouse]', error);
       Pop.error(error);

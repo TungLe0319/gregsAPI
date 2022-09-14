@@ -31,7 +31,7 @@ export class Car {
            </a>
          </div>
         
-          <div class="p-1 ps-2 elevation-5 rounded position-absolute top-0 start-0 bg-light hoverdiv selectable">
+          <div class="p-1 ps-2 elevation-5 rounded position-absolute top-0 start-0 bg-light hoverdiv selectablurle">
           
           <strong>$ ${this.price}</strong>
           </div>
