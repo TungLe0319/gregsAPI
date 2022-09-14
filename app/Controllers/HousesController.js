@@ -57,6 +57,8 @@ export class HousesController {
     }
   }
 
+
+  
   beginEdit(id) {
     housesService.setActiveHouse(id);
     setHTML('forms', House.GetHouseFormTemplate(appState.activeHouse));

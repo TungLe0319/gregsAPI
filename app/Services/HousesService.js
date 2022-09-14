@@ -27,6 +27,7 @@ import { api } from "./AxiosService.js";
      appState.houses = appState.houses.filter((h) => h.id != id);
    }
 
+   /** */
    setActiveHouse(id) {
      const house = appState.houses.find((house) => house.id == id);
      if (!house) {
@@ -36,10 +37,12 @@ import { api } from "./AxiosService.js";
      console.log('active house', appState.activeHouse);
    }
 
-   //example of a PUT REQUEST aka (UPDATE or EDIT)
+   /** 
+    *  //example of a PUT REQUEST aka (UPDATE or EDIT)
    //formData is the update you want to apply to that particular Car
+    * essentially in appData we made a new ActiveHouse = {} where we find and pass the id of the object we want and make it the active one  splice where the old one is in the api array and replace it with the updated house. */
    async editHouse(formData) {
-     const house = appState.activeHouse
+     const house = appState.activeHouse;
      const res = await api.put(`/api/houses/${house.id}`, formData);
      console.log('[editHouse]updated response', res.data);
      const index = appState.houses.findIndex((h) => h.id == house.id);
@@ -49,3 +52,4 @@ import { api } from "./AxiosService.js";
    }
  }
 export const housesService = new HousesService()
+
